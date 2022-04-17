@@ -262,7 +262,9 @@ class C3_API(object):
         # Generate msg to sign
         
         requestUrl = self.BASE_URL+self.PLACE_ORDER_ENDPOINT
-        
+        requestBody = {
+            "orderId": orderId
+        }
         msg = self.pubKey + requestUrl + str(requestBody)
         msg = msg.replace(" ", "")
         print(msg)
@@ -285,7 +287,12 @@ class C3_API(object):
 
         return result
 
-res = C3_API('JnNw3Wnx5QIBfjHSksYVFXEsbulcBO2uOJQln3woDGsizvervidJNk3gXE2rqzEUyNgCzg', 'QWn55oJdZofjXUv4JKN9LKarNkahzLqq84Nt_g')
+
+print('введите пожалуйста public_key')
+public = str(input())
+print('введите пожалуйста private_key')
+private = str(input())
+res = C3_API(private, public)
 print(res.getCurrentTxs(['DEL', 'USDT']))
 print(res.getCurrentOrders(['DEL', 'USDT']))
 print(res.getTxsHistory(['BNB', 'USDT']))
