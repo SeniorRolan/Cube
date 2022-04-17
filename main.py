@@ -208,7 +208,10 @@ class Coinsbit_API(object):
 
 
 if __name__ == '__main__':
-    r = Coinsbit_API('be6e4a9feb06fa5f60dd27dffb6878c6', 'a58369c8d86ca9d6b96f192a0016b9bc')
+    print('введите пожалуйста private_key, public_key')
+    private = str(input())
+    public = str(input())
+    r = Coinsbit_API(private, public)
     print('current_order_book', r.current_order_book(['BNB', 'USDT']))
     print('current_balances', r.current_balances("BNB"))
     print('orders in market', r.orders_in_market(['BNB', 'USDT']))
